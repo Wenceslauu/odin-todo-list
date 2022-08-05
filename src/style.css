@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --light-slate: #e2e8f0;
+    --light-grey: #d1d5db;
+    --grey: #9ca3af;
+    --grey-hover: #6b7280;
+    --dark-indigo: #4338ca;
+    --green: #22c55e;
+    --green-hover: #16a34a;
+    --orange: #fb923c;
+    --orange-hover: #f97316;
+    --red: #ef4444;
+    --red-hover: #7f1d1d;
+    --border-radius: 10px;
+    --padding: 25px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    position: relative;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: auto 1fr;
+
+    min-height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Header */
+
+.header {
+    grid-column: 1 / 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--dark-indigo);
+    color: white;
+    font-size: 2.1rem;
+    font-weight: bold;
+    padding: 15px;
+}
+
+/* Sidebar */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    background-color: var(--light-grey);
+    padding: var(--padding);
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.sidebar button {
+    background-color: var(--green);
+    color: white;
+    padding: 20px 30px;
+    width: 100%;
+    border: 2px solid grey;
+    border-radius: var(--border-radius);
+    margin-top: auto;
+    cursor: pointer;
+}
+
+.sidebar button:hover {
+    background-color: var(--green-hover);
+}
+
+/* Main-content */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    padding: var(--padding);
+    background-color: var(--light-slate);
+}
+
+.main-content .tasks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 175px;
+    gap: 20px;
+}
+
+.main-content .task {
+    position: relative;
+
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    background-color: var(--light-grey);
+    box-shadow: 1px 1px 5px grey;
+}
+
+.main-content .task button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    font-weight: bold;
+    background-color: var(--grey);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.main-content .task button:hover {
+    background-color: var(--grey-hover);
+}
+
+.main-content .tasks-container > button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: var(--orange);
+    color: white;
+    border: 2px solid grey;
+    border-radius: var(--border-radius);
+    box-shadow: 1px 1px 5px grey;
+    cursor: pointer;
+}
+
+.main-content .tasks-container > button:hover {
+    background-color: var(--orange-hover);
+}
+
+.main-content > button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    color: white;
+    background-color: var(--red);
+    padding: 20px 50px;
+    border: 2px solid grey;
+    border-radius: var(--border-radius);
+    margin-top: auto;
+    cursor: pointer;
+}
+
+.main-content > button:hover {
+    background-color: var(--red-hover);
+}
+
+/* Modals */
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+
+    width: 475px;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: var(--border-radius);
+    padding: var(--padding);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 0.2s ease-in-out;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal input {
+    font-size: 2rem;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+}
+
+.modal input[type='date'] {
+    font-size: 1.5rem;
+}
+
+.modal textarea {
+    font-size: 1.5rem;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+    resize: none;
+}
+
+.modal button {
+    margin-top: 20px;
+    color: white;
+    background-color: var(--green);
+    padding: 20px 0;
+    border-radius: var(--border-radius);
+}
+
+.modal button:hover {
+    background-color: var(--green-hover);
+}
